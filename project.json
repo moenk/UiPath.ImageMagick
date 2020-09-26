@@ -3,7 +3,8 @@
   "description": "Blank Library",
   "main": "NewActivity.xaml",
   "dependencies": {
-    "UiPath.System.Activities": "20.4.0"
+    "UiPath.System.Activities": "20.4.0",
+    "UiPath.WebAPI.Activities": "1.4.5"
   },
   "webServices": [],
   "entitiesStores": [],
