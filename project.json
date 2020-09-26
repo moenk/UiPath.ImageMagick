@@ -3,10 +3,7 @@
   "description": "Blank Library",
   "main": "NewActivity.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "2.9.3-beta.1162882",
-    "UiPath.Mail.Activities": "1.9.3-beta.1159742",
-    "UiPath.System.Activities": "20.10.1-beta.1162306",
-    "UiPath.UIAutomation.Activities": "20.10.2-preview"
+    "UiPath.System.Activities": "20.4.0"
   },
   "webServices": [],
   "entitiesStores": [],
