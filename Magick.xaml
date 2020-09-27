@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1208,1265</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1208,1065</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>StartProcessVB_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="22">
@@ -66,7 +66,7 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="RunMagick" sap:VirtualizedContainerService.HintSize="539,1060" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="RunMagick" sap:VirtualizedContainerService.HintSize="526,860" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="in_ProcessPath" />
       <Variable x:TypeArguments="x:String" Name="in_ProcessArgs" />
@@ -77,8 +77,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:PathExists DisplayName="Path Exists" Exists="[ImageMagickExists]" sap:VirtualizedContainerService.HintSize="497,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[ImageMagickPath]" PathType="Folder" />
-    <If Condition="[ImageMagickExists]" sap:VirtualizedContainerService.HintSize="497,235" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:PathExists DisplayName="Path Exists" Exists="[ImageMagickExists]" sap:VirtualizedContainerService.HintSize="484,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[ImageMagickPath]" PathType="Folder" />
+    <If Condition="[ImageMagickExists]" sap:VirtualizedContainerService.HintSize="484,235" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Else>
         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Install workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Install.xaml">
           <ui:InvokeWorkflowFile.Arguments>
@@ -88,7 +88,7 @@
         </ui:InvokeWorkflowFile>
       </If.Else>
     </If>
-    <Assign sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[in_ProcessPath]</OutArgument>
       </Assign.To>
@@ -96,7 +96,7 @@
         <InArgument x:TypeArguments="x:String">[ImageMagickPath+"\magick.exe"]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[in_ProcessArgs]</OutArgument>
       </Assign.To>
@@ -104,20 +104,21 @@
         <InArgument x:TypeArguments="x:String">[ImageMagickCommand]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim objProcess As System.Diagnostics.Process&#xD;&#xA;Try&#xD;&#xA;    objProcess = New System.Diagnostics.Process()&#xD;&#xA;    objProcess.StartInfo.FileName = in_ProcessPath&#xD;&#xA;&#x9;objProcess.StartInfo.Arguments = in_ProcessArgs&#xD;&#xA;&#x9;objProcess.StartInfo.UseShellExecute = False&#xD;&#xA;&#x9;objProcess.StartInfo.RedirectStandardOutput  = True&#xD;&#xA;    objProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden&#xD;&#xA;    objProcess.Start()&#xD;&#xA;&#x9;out_StandardOutput = objProcess.StandardOutput.ReadToEnd()&#xD;&#xA;&#x9;objProcess.WaitForExit()&#xD;&#xA;&#x9;out_Result = objProcess.ExitCode()&#xD;&#xA;    objProcess.Close()&#xD;&#xA;Catch&#xD;&#xA;    out_Result = -1&#xD;&#xA;&#x9;out_StandardOutput = &quot;&quot;&#xD;&#xA;End Try&#xD;&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="497,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim objProcess As System.Diagnostics.Process&#xA;Try&#xA;    objProcess = New System.Diagnostics.Process()&#xA;    objProcess.StartInfo.FileName = in_ProcessPath&#xA;&#x9;objProcess.StartInfo.Arguments = in_ProcessArgs&#xA;&#x9;objProcess.StartInfo.UseShellExecute = False&#xA;&#x9;objProcess.StartInfo.RedirectStandardOutput  = True&#xA;    objProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden&#xA;    objProcess.Start()&#xA;&#x9;out_StandardOutput = objProcess.StandardOutput.ReadToEnd()&#xA;&#x9;objProcess.WaitForExit()&#xA;&#x9;out_Result = objProcess.ExitCode()&#xA;    objProcess.Close()&#xA;Catch&#xA;    out_Result = -1&#xA;&#x9;out_StandardOutput = &quot;&quot;&#xA;End Try&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="484,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
       <ui:InvokeCode.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ProcessPath">[in_ProcessPath]</InArgument>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="out_Result">[out_Result]</OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ProcessArgs">[in_ProcessArgs]</InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_StandardOutput">[out_StandardOutput]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ProcessPath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ProcessPath" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:Int32" x:Key="out_Result">
+          <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="out_Result" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ProcessArgs">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ProcessArgs" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_StandardOutput">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_StandardOutput" />
+        </OutArgument>
       </ui:InvokeCode.Arguments>
     </ui:InvokeCode>
-    <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[out_Result]" sap:VirtualizedContainerService.HintSize="497,160" sap2010:WorkflowViewState.IdRef="Switch`1_1">
-      <Switch.Default>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[out_StandardOutput]" />
-      </Switch.Default>
-      <ui:LogMessage x:Key="-1" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="[out_StandardOutput]" />
-      <ui:LogMessage x:Key="0" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[out_StandardOutput]" />
-    </Switch>
   </Sequence>
 </Activity>
